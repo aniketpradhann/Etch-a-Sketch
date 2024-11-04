@@ -1,7 +1,6 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
 body {
@@ -24,15 +23,13 @@ body {
 #grid-box {
     display: flex;
     flex-wrap: wrap;
-    flex: 0 0 1;
-    border: 1px solid #ddd;
+    border: 1px solid black;
+    background-color: white;
+
 }
 
 .cell {
-    border: 1px solid black;
-    flex: 1 0 auto;
-    margin: 0;
-    padding: 0;
+    border: 0.1px solid whitesmoke;
 }
 
 .slider-container {
