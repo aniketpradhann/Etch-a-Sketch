@@ -4,13 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Etch-A-Sketch</title>
-    
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="main-box-container">
-        <div class="boxes" id="grid-box"></div>
+    <div class="container">
+        <h1>Etch-A-Sketch</h1>
+        <div class="main-box-container">
+            <div class="boxes" id="grid-box"></div>
+        </div>
+
     </div>
+    <div class="slider-container">
+        <label for="slider">Grid Size: <span id="slider-value">16</span> x <span id="slider-value-2">16</span></label>
+        <input type="range" min="1" max="100" value="16" name="slider" id="slider">
+    </div>
+    <script src="script.js" defer></script>
 </body>
-<script src="script.js" defer></script>
-<link rel="stylesheet" href="style.css" >
 </html>

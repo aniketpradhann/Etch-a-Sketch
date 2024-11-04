@@ -1,36 +1,44 @@
-const boxContainer = document.querySelector("#grid-box")
-let rows = 50
-let columns = 50
+const boxContainer = document.querySelector("#grid-box");
+const squaresPerSide = 16;
+const gridSize = 600;
+const slider = document.querySelector("#slider");
+const sliderValue = document.querySelector('#slider-value');
+const sliderValue2 = document.querySelector('#slider-value-2');
 
-const gridSize = 600
 
+boxContainer.style.height = boxContainer.style.width = `${gridSize}px`
 
-
-
-boxContainer.style.width = `${gridSize}px`
-boxContainer.style.height = `${gridSize}px`
 
 function backgroundColor() {
-    console.log(this)
-    this.style.backgroundColor = "black"
+    this.style.backgroundColor = "black";
 }
 
-
-function createCells() {
-    for(let i=0; i < (rows * columns); i++) {
-        const gridCells = document.createElement('div')
-        gridCells.classList.add('cell')
-        gridCells.style.height = `${(gridSize / rows) -2}px`
-        gridCells.style.width = `${(gridSize / columns) -2}px`
-        gridCells.addEventListener("mouseover", backgroundColor)
-        boxContainer.appendChild(gridCells)
-        
+function createCells(squaresPerSide) {
+    const cellSize = `${(gridSize / squaresPerSide) -2}`;
+    const totalSquares = squaresPerSide * squaresPerSide;
+    
+    for(let i = 0; i < totalSquares; i++) {
+        const gridCells = document.createElement('div');
+        gridCells.classList.add('cell');
+        gridCells.style.width = `${cellSize}px`;
+        gridCells.style.height = `${cellSize}px`;
+        gridCells.addEventListener("mouseover", backgroundColor);
+        boxContainer.appendChild(gridCells);
     }
-
 }
 
+function deleteCells() {
+    while (boxContainer.firstChild) {
+        boxContainer.removeChild(boxContainer.firstChild);
+    }
+}
 
+slider.oninput = function() {
+    const newSize = parseInt(this.value);
+    sliderValue.textContent = newSize;
+    sliderValue2.textContent = newSize;
+    deleteCells();
+    createCells(newSize);
+}
 
-
-
-createCells()
+createCells(squaresPerSide);
